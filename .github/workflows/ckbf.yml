@@ -1,5 +1,5 @@
 # File: .github/workflows/repo-sync.yml
-name: sync from ddgksf2013|LeeeMooo|limbopro|DivineEngine
+name: sync from ddgksf2013|LeeeMooo|limbopro|NobyDa|KOP-XIAO
 on:
   schedule:
     - cron: '* */1 * * *'
@@ -33,7 +33,7 @@ jobs:
           destination_branch: "LeeeMooo"
           github_token: ${{ secrets.PAT }}
                     
-      - name: sync from limbopro/Adblock4limbo
+      - name: sync from limbopro
         uses: repo-sync/github-sync@v2
         if: env.PAT
         with:
@@ -49,4 +49,22 @@ jobs:
           source_repo: "https://github.com/DivineEngine/Profiles.git"
           source_branch: "master"
           destination_branch: "DivineEngine"
+          github_token: ${{ secrets.PAT }}
+                    
+      - name: sync from NobyDa
+        uses: repo-sync/github-sync@v2
+        if: env.PAT
+        with:
+          source_repo: "https://github.com/NobyDa/Script.git"
+          source_branch: "master"
+          destination_branch: "NobyDa"
+          github_token: ${{ secrets.PAT }}
+
+      - name: sync from KOP-XIAO
+        uses: repo-sync/github-sync@v2
+        if: env.PAT
+        with:
+          source_repo: "https://github.com/KOP-XIAO/QuantumultX.git"
+          source_branch: "master"
+          destination_branch: "KOP-XIAO"
           github_token: ${{ secrets.PAT }}
