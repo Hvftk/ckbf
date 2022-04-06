@@ -1,5 +1,5 @@
 # File: .github/workflows/repo-sync.yml
-name: sync from ddgksf2013|LeeeMooo|limbopro
+name: sync from ddgksf2013|LeeeMooo|limbopro|DivineEngine
 on:
   schedule:
     - cron: '* */1 * * *'
