@@ -1,0 +1,43 @@
+# File: .github/workflows/repo-sync.yml
+name: sync from ddgksf2013|LeeeMooo|limbopro
+on:
+  schedule:
+    - cron: '* */1 * * *'
+  workflow_dispatch:
+
+jobs:
+  repo-sync:
+    env:
+      PAT: ${{ secrets.PAT }} #此处PAT需要申请，教程详见：https://www.jianshu.com/p/bb82b3ad1d11
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: sync from ddgksf2013
+        uses: repo-sync/github-sync@v2
+        if: env.PAT
+        with:
+          source_repo: "https://github.com/ddgksf2013/Cuttlefish.git"
+          source_branch: "master"
+          destination_branch: "ddgksf2013"
+          github_token: ${{ secrets.PAT }}
+
+      - name: sync from LeeeMooo
+        uses: repo-sync/github-sync@v2
+        if: env.PAT
+        with:
+          source_repo: "https://github.com/LeeeMooo/ScriptOwn.git"
+          source_branch: "master"
+          destination_branch: "LeeeMooo"
+          github_token: ${{ secrets.PAT }}
+                    
+      - name: sync from limbopro/Adblock4limbo
+        uses: repo-sync/github-sync@v2
+        if: env.PAT
+        with:
+          source_repo: "https://github.com/limbopro/Adblock4limbo.git"
+          source_branch: "main"
+          destination_branch: "limbopro"
+          github_token: ${{ secrets.PAT }}
