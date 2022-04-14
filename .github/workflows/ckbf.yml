@@ -2,7 +2,7 @@
 name: sync from ddgksf2013|LeeeMooo|limbopro|DivineEngine|NobyDa|KOP-XIAO|I-am-R-E
 on:
   schedule:
-    - cron: '0 */1 * * *'
+    - cron: '0 0-23 * * *'
   workflow_dispatch:
 
 jobs:
