@@ -69,11 +69,20 @@ jobs:
           destination_branch: "KOP-XIAO"
           github_token: ${{ secrets.PAT }}
 
-      - name: sync from I-am-R-E
+      - name: sync from I-am-R-E/QuantumultX
         uses: repo-sync/github-sync@v2
         if: env.PAT
         with:
           source_repo: "https://github.com/I-am-R-E/QuantumultX.git"
           source_branch: "main"
-          destination_branch: "I-am-R-E"
+          destination_branch: "I-am-R-E/QuantumultX"
+          github_token: ${{ secrets.PAT }}          
+          
+      - name: sync from I-am-R-E/Functional-Store-Hub
+        uses: repo-sync/github-sync@v2
+        if: env.PAT
+        with:
+          source_repo: "https://github.com/I-am-R-E/Functional-Store-Hub.git"
+          source_branch: "Mster"
+          destination_branch: "I-am-R-E/Functional-Store-Hub"
           github_token: ${{ secrets.PAT }}
