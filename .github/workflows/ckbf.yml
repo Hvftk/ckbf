@@ -15,14 +15,14 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: sync from ddgksf2013
-        uses: repo-sync/github-sync@v2
-        if: env.PAT
-        with:
-          source_repo: "https://github.com/ddgksf2013/Cuttlefish.git"
-          source_branch: "master"
-          destination_branch: "ddgksf2013"
-          github_token: ${{ secrets.PAT }}
+#       - name: sync from ddgksf2013
+#         uses: repo-sync/github-sync@v2
+#         if: env.PAT
+#         with:
+#           source_repo: "https://github.com/ddgksf2013/Cuttlefish.git"
+#           source_branch: "master"
+#           destination_branch: "ddgksf2013"
+#           github_token: ${{ secrets.PAT }}
 
       - name: sync from LeeeMooo
         uses: repo-sync/github-sync@v2
