@@ -63,61 +63,12 @@ async function douyu() {
     let [daySignErr, daySignResult] = await commonJS.attempt(daySignRetry(), '[每日签到] 签到异常❗️')
 		signNotify += daySignResult + "\r\n"
 		await yubaSign()
-		for (var i = 0, len = 4; i < len; i++) {
-			let [code] = await dayLottery()
-			if (code === 410004) break
-		  await	commonJS.sleep(15*1000)
-		}
 		commonJS.notify(scriptName, "", signNotify)
 		commonJS.done()
 	}
 }
 
 douyu()
-
-// 
-function dayLottery() {
-	const name = "[鱼粮抽奖]"
-	//const cookie = getParam(commonJS.read(cookieKey, 'default'), ';', '=')
-	const body = `rid=9999&token=${commonJS.read(tokenKey, 'default')}`
-	dolotteryOptions.headers['token'] = commonJS.read(tokenKey, 'default')
-	dolotteryOptions.body = body
-	let log = ''
-	let notify = ''
-	return new Promise((resolve) => {
-		commonJS.post(dolotteryOptions, (err, res, data) => {
-			if (err) {
-				notify = `${name}异常,查看log`
-				log = `${name} 异常: ${err}`
-				commonJS.log(log)
-				signNotify += notify + "\r\n"
-				resolve([null])
-			} else {
-				const signData = JSON.parse(data)
-				let { error, msg, data: _data } = signData
-				commonJS.log(data)
-				switch (parseInt(error)) {
-					case 0:
-						notify = `${name} ${_data.lotteryRes.data.msg}`
-						commonJS.log(notify)
-						signNotify += notify + "\r\n"
-						break;
-					case 410004:
-						notify = `${name} ${msg}❗️`
-						signNotify += notify + "\r\n"
-						resolve([410004])
-						break
-					case 410007:
-						notify = `${name} ${msg}❗️`
-						signNotify += notify + "\r\n"
-						break
-					default:
-				}
-				resolve([null])
-			}
-		})
-	})
-}
 
 // 每日签到
 function daySign() {
