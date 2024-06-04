@@ -42,14 +42,14 @@ jobs:
           destination_branch: "limbopro"
           github_token: ${{ secrets.PAT }}
                     
-#      - name: sync from DivineEngine
-#        uses: repo-sync/github-sync@v2
-#        if: env.PAT
-#        with:
-#          source_repo: "https://github.com/DivineEngine/Profiles.git"
-#          source_branch: "master"
-#          destination_branch: "DivineEngine"
-#          github_token: ${{ secrets.PAT }}
+      - name: sync from DivineEngine
+        uses: repo-sync/github-sync@v2
+        if: env.PAT
+        with:
+          source_repo: "https://github.com/ConnersHua/RuleGo.git"
+          source_branch: "master"
+          destination_branch: "ConnersHua"
+          github_token: ${{ secrets.PAT }}
 
       - name: sync from NobyDa
         uses: repo-sync/github-sync@v2
